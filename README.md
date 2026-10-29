@@ -27,7 +27,7 @@ npm run preview     # serves dist/
 | `src/site.ts` | The site's name, description and every link: the header, the footer and the pages read them |
 | `src/styles/global.css` | Tailwind on the brand's tokens, the site's surfaces named after them, and its few utilities |
 | `src/components/` | The header, the footer, the theme switch, links and buttons, the logo and the code |
-| `src/components/PlaygroundApp.svelte` | `@kupcad/playground` with the examples and Share in its toolbar |
+| `src/components/PlaygroundApp.svelte` | `@kupcad/playground` under a bar of the examples (Load) and Share |
 | `src/lib/share.js` | A script in a playground address (`#code=`), written and read |
 | `src/examples/` | The scripts the playground starts on; `index.ts` lists them, the first the home page's |
 | `src/grammars/kupcad.tmLanguage.json` | KupCAD's TextMate grammar, which highlights the home page's code |
@@ -44,7 +44,8 @@ npm run preview     # serves dist/
   It needs `@kupcad/ui` 0.1.2 or later, the first whose tokens a page can force.
 - **The playground** is `@kupcad/playground` from npm, rendered in the browser alone
   (`client:only`), as its core runs in a Web Worker on WebAssembly. Only `/playground/` loads it:
-  the home page has no JavaScript but the theme switch.
+  the home page has no JavaScript but the theme switch. Load gives it an example by its
+  `load()`, which needs `@kupcad/playground` 0.1.2 or later.
 - **Shared scripts** travel in the address's fragment: `#code=` and the script's UTF-8 in
   base64url (`src/lib/share.js`). The docs' "Open in playground" links write it, and Share does
   too. The fragment never reaches a server, and the script runs in the worker, with no files
