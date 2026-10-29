@@ -1,11 +1,256 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// The home page: what KupCAD is, a script and what it makes, what the language covers, how a
+// part gets built, and where it runs; every section a cell of the frame.
+import ButtonLink from '../components/ButtonLink.astro';
+import Code from '../components/Code.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Icon from '../components/Icon.astro';
+import Link from '../components/Link.astro';
 import Layout from '../layouts/Layout.astro';
+import { EXAMPLES } from '../examples';
+import { encodeSource } from '../lib/share.js';
+import { LINKS } from '../site';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const plate = EXAMPLES[0];
+const openPlate = `${LINKS.playground}#${encodeSource(plate.source)}`;
+
+/** What the language covers, a row each, each opening its part of the reference. */
+const CAPABILITIES = [
+  { left: 'Ruby-inspired', title: 'Language', right: 'Blocks, classes', href: LINKS.language },
+  { left: 'Solids, sketches', title: 'Geometry', right: 'Booleans, sweeps', href: LINKS.geometry },
+  { left: 'param()', title: 'Parameters', right: 'Sliders, JSON', href: LINKS.parameters },
+  { left: 'Meshes, exact', title: 'Export', right: 'Drawings', href: LINKS.exports },
+  { left: 'CLI, LSP', title: 'Tooling', right: 'Lint, format', href: LINKS.cli },
+];
+
+const FORMATS = ['STL', '3MF', 'glTF', 'OBJ', 'STEP', 'SVG', 'DXF'];
+
+/** A part's way from script to file, the CLI commands for each. */
+const STEPS = ['Write', 'Preview', 'Export'];
+const COMMANDS = [
+  ['kupcad check plate.kup', 'lint before it runs'],
+  ['kupcad watch plate.kup -o plate.stl', 'rebuild on each save'],
+  ['kupcad build plate.kup -p width=60 -o plate.3mf', 'a value from outside'],
+  ['kupcad build plate.kup --split parts/', 'a file per part'],
+];
+
+/** Where KupCAD runs, a card each. */
+const PLACES = [
+  {
+    kind: 'Browser',
+    title: 'Playground',
+    text: 'The editor, the model and its parameters, run by the core compiled to WebAssembly. Nothing to install; embed it in a page of your own with @kupcad/playground.',
+    href: LINKS.playground,
+    action: 'Open',
+    meta: 'WebAssembly',
+  },
+  {
+    kind: 'Terminal',
+    title: 'Command line',
+    text: 'kupcad build, check, fmt and watch: parameters from the command line or a JSON file, a parts list, every format, and packages from Git.',
+    href: LINKS.cli,
+    action: 'Reference',
+    meta: 'Linux · macOS · Windows',
+  },
+  {
+    kind: 'Editor',
+    title: 'VS Code',
+    text: 'The language server in your editor: problems as you type, hovers with sizes and volumes, go to definition, and the preview beside the script.',
+    href: LINKS.vscode,
+    action: 'Extension',
+    meta: 'kupcad lsp',
+  },
+  {
+    kind: 'Desktop',
+    title: 'Desktop app',
+    text: 'A folder of scripts, the editor and the preview in one window, on the kupcad it bundles. It keeps itself up to date.',
+    href: LINKS.desktop,
+    action: 'README',
+    meta: 'macOS · Linux · Windows',
+  },
+];
 ---
 
 <Layout>
-	<Welcome />
+  <Header />
+  <main class="frame grid grid-cols-1 px-1">
+    <!-- What it is -->
+    <section class="grid-lines bg-paper px-6 pt-10 pb-8 md:px-10">
+      <div class="eyebrow flex flex-wrap justify-between gap-x-8 gap-y-2">
+        <span>Parametric CAD language</span>
+        <span>Script → model → part</span>
+        <span>Open source</span>
+      </div>
+      <div class="mt-12 grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_1fr]">
+        <Icon class="size-36 rounded-full md:size-40" />
+        <div class="flex flex-col gap-8">
+          <p class="text-lg leading-relaxed md:text-xl">
+            KupCAD is a language for parts. You write a script, the shapes and their sizes as code,
+            and give it parameters; it builds the model and exports it for a printer, a laser, a
+            mill or another CAD tool.
+          </p>
+          <div class="flex flex-wrap gap-1">
+            <ButtonLink href={LINKS.playground}>Open the playground</ButtonLink>
+            <ButtonLink href={LINKS.docs} variant="ink">Read the docs</ButtonLink>
+          </div>
+        </div>
+      </div>
+      <h1 class="display mt-16">
+        <span class="block text-[clamp(4.5rem,17vw,16rem)]">KupCAD</span>
+        <span class="block text-[clamp(1.75rem,9.6vw,10rem)] whitespace-nowrap">Parts as code</span>
+      </h1>
+    </section>
+
+    <!-- A script and what it is -->
+    <section class="grid-lines bg-paper px-6 py-12 md:px-10 md:py-16">
+      <div class="eyebrow flex flex-wrap justify-between gap-x-8 gap-y-2">
+        <span>Solids</span>
+        <span>Sketches</span>
+        <span>Paths</span>
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[4.5rem_minmax(0,1.35fr)_minmax(0,1fr)]">
+        <div aria-hidden="true" class="ruler hidden lg:block"></div>
+        <figure class="self-start border-4 border-frame bg-card">
+          <figcaption class="eyebrow flex items-center justify-between gap-4 border-b border-line px-5 py-3">
+            <span>{plate.id}.kup</span>
+            <a href={openPlate} class="text-accent-text hover:underline">Open in playground →</a>
+          </figcaption>
+          <div class="p-5">
+            <Code code={plate.source} />
+          </div>
+        </figure>
+        <div class="flex flex-col gap-6">
+          <h2 class="display text-5xl leading-[0.92] md:text-6xl">A part is a script.</h2>
+          <p class="max-w-prose text-lg leading-relaxed">
+            Shapes are values: a cube, a cylinder, a sketch extruded or revolved. Every operation
+            returns a new one, so they chain, and <code class="font-mono">-</code> cuts one from
+            another. <code class="font-mono">param</code> turns a number into a slider anyone can
+            move, in the playground, the editor or the command line.
+          </p>
+          <div aria-hidden="true" class="hatch h-24 max-w-sm"></div>
+          <ButtonLink href={LINKS.language} variant="ink" class="self-start">The language</ButtonLink>
+        </div>
+      </div>
+    </section>
+
+    <!-- What it covers -->
+    <section class="frame grid grid-cols-1 lg:grid-cols-2">
+      <div class="flex flex-col justify-between gap-12 bg-card p-6 md:p-10">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <p class="eyebrow">The reference</p>
+          <h2 class="display text-right text-4xl md:text-5xl">From syntax<br />to export</h2>
+        </div>
+        <ul class="text-[15px]">
+          {
+            CAPABILITIES.map(({ left, title, right, href }) => (
+              <li class="first:bg-ink first:text-card">
+                <Link
+                  href={href}
+                  class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-ink px-2 py-2.5 transition-colors hover:bg-ink hover:text-card"
+                >
+                  <span>{left}</span>
+                  <span class="font-semibold">{title}</span>
+                  <span class="text-right">{right}</span>
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="flex flex-col gap-10 bg-card p-6 md:p-10">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <p class="eyebrow">Export</p>
+          <h2 class="display text-right text-4xl md:text-5xl">Every format<br />a shop takes</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="border-b-2 border-ink pb-2 font-semibold">Meshes</h3>
+            <p class="mt-3 leading-relaxed">
+              STL for a printer, 3MF with each part once and its colours for a slicer, glTF and OBJ
+              for a viewer, a parts list beside them.
+            </p>
+          </div>
+          <div>
+            <h3 class="border-b-2 border-ink pb-2 font-semibold">Drawings and exact</h3>
+            <p class="mt-3 leading-relaxed">
+              SVG and DXF with true arcs and curves, for a laser or a mill; STEP from the exact B-Rep
+              engine, still being written.
+            </p>
+          </div>
+        </div>
+        <Link href={LINKS.exports} class="eyebrow self-end hover:text-accent-text">The formats →</Link>
+      </div>
+    </section>
+
+    <!-- How a part is built -->
+    <section class="grid-lines bg-paper p-6 md:p-16">
+      <div class="grid gap-10 bg-accent p-6 text-accent-fg md:p-10 lg:grid-cols-2">
+        <ol class="flex flex-col justify-center gap-4 bg-night p-6 font-mono text-[13px] text-night-fg md:p-8">
+          {
+            COMMANDS.map(([command, what]) => (
+              <li>
+                <span class="text-accent select-none">$ </span>
+                {command}
+                <span class="block text-night-fg/55"># {what}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="flex flex-col justify-end gap-6">
+          <ol class="eyebrow flex items-center justify-between gap-4">
+            {
+              STEPS.map((step) => (
+                <li class="flex items-center gap-3">
+                  <span aria-hidden="true" class="size-2.5 rounded-full bg-night" />
+                  {step}
+                </li>
+              ))
+            }
+          </ol>
+          <h2 class="display text-6xl md:text-7xl">Build</h2>
+          <p class="max-w-prose leading-relaxed">
+            The same script, from the playground to a CI step: values from the command line or a
+            JSON file, checked against the script's rules, and every command failing loudly on any
+            error.
+          </p>
+          <ul class="flex flex-wrap gap-2" aria-label="Export formats">
+            {FORMATS.map((format) => <li class="eyebrow bg-card px-4 py-3 text-ink">{format}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Where it runs -->
+    <section class="flex flex-wrap items-end justify-between gap-6 bg-paper px-6 py-10 md:px-10">
+      <div>
+        <h2 class="display text-5xl md:text-6xl">Wherever you work</h2>
+        <p class="mt-4 leading-relaxed">One language and one core, in the browser, the terminal, your editor and on the desktop.</p>
+      </div>
+      <ButtonLink href={LINKS.releases} variant="ink">Download</ButtonLink>
+    </section>
+    <section class="frame grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+      {
+        PLACES.map(({ kind, title, text, href, action, meta }) => (
+          <article class="flex flex-col bg-card">
+            <div class="flex-1 p-6 md:p-8">
+              <p class="eyebrow text-muted">{kind}</p>
+              <h3 class="mt-3 text-2xl font-semibold tracking-tight">{title}</h3>
+              <p class="mt-4 leading-relaxed">{text}</p>
+            </div>
+            <div class="eyebrow flex items-center justify-between gap-4 border-t border-line px-6 py-5 md:px-8">
+              <Link
+                href={href}
+                class="hover:text-accent-text"
+              >
+                {action} →
+              </Link>
+              <span class="text-muted">{meta}</span>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+  <Footer />
 </Layout>

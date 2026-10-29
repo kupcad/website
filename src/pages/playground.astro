@@ -1,0 +1,26 @@
+---
+// The playground, filling the window under the header: rendered in the browser alone
+// (`client:only`), as the core runs in a worker there. The page takes the playground's own type
+// (@kupcad/ui's --kc-font and --kc-font-size) and surface.
+import Header from '../components/Header.astro';
+import PlaygroundApp from '../components/PlaygroundApp.svelte';
+import { EXAMPLES } from '../examples';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Playground"
+  description="Write a KupCAD script in your browser: the model, its parameters and its exports, with nothing to install."
+  fill
+>
+  <Header />
+  <main
+    class="min-h-0 flex-1 bg-card font-[family-name:var(--kc-font)] text-[length:var(--kc-font-size)]"
+  >
+    <PlaygroundApp client:only="svelte" examples={EXAMPLES}>
+      <p slot="fallback" class="eyebrow grid h-full place-items-center text-muted">
+        Loading the playground…
+      </p>
+    </PlaygroundApp>
+  </main>
+</Layout>

@@ -1,0 +1,13 @@
+---
+// KupCAD's icon: public/icon.svg drawn in the page (`<use>`), so the theme gives it its colours
+// (--kc-icon-bg, --kc-icon-fg); as an <img> it would keep its own.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg viewBox="0 0 660 660" aria-hidden="true" class={className}>
+  <use href="/icon.svg#kc-icon"></use>
+</svg>

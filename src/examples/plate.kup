@@ -1,0 +1,9 @@
+# @title Mounting plate
+width = param(:width, default: 40, validate: { min: 20, max: 120 }, unit: "mm")
+hole = param(:hole, default: 3.4, validate: { min: 2, max: 8 }, unit: "mm")
+
+plate = cube(x: width, y: 30, z: 4, round_r: 2)
+bolt = cylinder(d: hole, h: 10).translate(z: -1)
+corners = [[5, 5], [width - 5, 5], [5, 25], [width - 5, 25]]
+
+plate.difference(corners.map { |(x, y)| bolt.translate(x, y, 0) })

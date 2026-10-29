@@ -1,0 +1,28 @@
+---
+// A page that isn't there: where to go instead.
+import ButtonLink from '../components/ButtonLink.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+import { LINKS } from '../site';
+---
+
+<Layout title="Not found">
+  <Header />
+  <main class="frame grid px-1">
+    <section class="grid-lines bg-paper px-6 py-16 md:px-10 md:py-24">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="display mt-8 text-[clamp(4rem,14vw,13rem)]">Not found</h1>
+      <p class="mt-8 max-w-prose text-lg leading-relaxed">
+        There is no page at this address. The documentation lives at docs.kupcad.org; the
+        playground and the rest are here.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-1">
+        <ButtonLink href="/">Home</ButtonLink>
+        <ButtonLink href={LINKS.docs} variant="ink">The docs</ButtonLink>
+        <ButtonLink href={LINKS.playground} variant="card">The playground</ButtonLink>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,46 @@
+---
+// The theme: Auto (the system's), Light or Dark. Chosen, it is the root's data-theme, which
+// @kupcad/ui's tokens follow (and with them the site, the playground's viewer and its editor),
+// and this browser keeps it (THEME_KEY), Layout's head setting it again before a page is drawn.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const OPTIONS = [
+  ['auto', 'Auto'],
+  ['light', 'Light'],
+  ['dark', 'Dark'],
+];
+---
+
+<label class:list={['eyebrow relative flex cursor-pointer items-center gap-2', className]}>
+  <span class="sr-only">Theme</span>
+  <svg viewBox="0 0 16 16" aria-hidden="true" class="size-4 shrink-0">
+    <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"></circle>
+    <path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"></path>
+  </svg>
+  <select data-theme-select class="eyebrow cursor-pointer appearance-none bg-transparent outline-offset-4">
+    {OPTIONS.map(([value, label]) => <option value={value}>{label}</option>)}
+  </select>
+</label>
+
+<script>
+  import { THEME_KEY } from '../site';
+
+  const root = document.documentElement;
+  for (const select of document.querySelectorAll<HTMLSelectElement>('select[data-theme-select]')) {
+    select.value = root.dataset.theme ?? 'auto';
+    select.addEventListener('change', () => {
+      const theme = select.value;
+      if (theme === 'auto') delete root.dataset.theme;
+      else root.dataset.theme = theme;
+      try {
+        if (theme === 'auto') localStorage.removeItem(THEME_KEY);
+        else localStorage.setItem(THEME_KEY, theme);
+      } catch {
+        // No storage (a private window): the choice lasts this page
+      }
+    });
+  }
+</script>

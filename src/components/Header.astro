@@ -1,0 +1,35 @@
+---
+// The site's header: its name, the theme and its links (site.ts), each a cell of the frame, the
+// playground last on the accent. Narrow, the links take a row under the name and the theme, and
+// the playground its own.
+import { LINKS, NAV } from '../site';
+import Link from './Link.astro';
+import Logo from './Logo.astro';
+import ThemeSelect from './ThemeSelect.astro';
+
+const here = Astro.url.pathname;
+const cell = 'eyebrow flex items-center justify-center px-3 py-4 transition-colors md:px-6';
+---
+
+<header class="frame sticky top-0 z-10 grid shrink-0 grid-cols-[1fr_auto] p-1 md:flex">
+  <a href="/" class="flex items-center bg-paper px-5 py-3 md:flex-1" aria-label="KupCAD home">
+    <Logo />
+  </a>
+  <ThemeSelect class="bg-paper px-5 hover:bg-card" />
+  <nav aria-label="Site" class="frame col-span-2 grid grid-cols-3 md:flex">
+    {
+      NAV.map(({ label, href }) => (
+        <Link href={href} class:list={[cell, 'bg-paper hover:bg-card']}>
+          {label}
+        </Link>
+      ))
+    }
+    <a
+      href={LINKS.playground}
+      aria-current={here.startsWith(LINKS.playground) ? 'page' : undefined}
+      class:list={[cell, 'col-span-3 gap-2 bg-accent text-accent-fg hover:bg-accent-hover']}
+    >
+      Playground <span aria-hidden="true">→</span>
+    </a>
+  </nav>
+</header>

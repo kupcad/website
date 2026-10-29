@@ -1,0 +1,52 @@
+---
+// The site's footer, on the night in either theme: the call to try it, the links (site.ts's NAV
+// and the playground), and where KupCAD comes from and under what license.
+import { LINKS, NAV } from '../site';
+import ButtonLink from './ButtonLink.astro';
+import Link from './Link.astro';
+
+const links = [{ label: 'Playground', href: LINKS.playground }, ...NAV];
+const inline = 'underline hover:text-accent';
+// Hairlines between the columns and the links, as the frame on the night wouldn't show
+const rule = 'border-night-fg/15';
+---
+
+<footer class="frame grid grid-cols-1 p-1 lg:grid-cols-[5fr_3fr_4fr] lg:gap-0">
+  <div class="flex flex-col gap-6 bg-night p-10 text-night-fg">
+    <h2 class="display text-5xl md:text-6xl">Write your next part as code.</h2>
+    <p class="max-w-md text-night-fg/75">
+      Open the playground and change the script: the model follows as you type, in your browser,
+      with nothing to install.
+    </p>
+    <ButtonLink href={LINKS.playground} class="self-start">Open the playground</ButtonLink>
+  </div>
+  <nav aria-label="Footer" class:list={['grid content-start divide-y bg-night lg:border-l', rule]}>
+    {
+      links.map(({ label, href }) => (
+        <Link
+          href={href}
+          class:list={['eyebrow px-6 py-6 text-night-fg transition-colors hover:text-accent', rule]}
+        >
+          {label}
+        </Link>
+      ))
+    }
+  </nav>
+  <dl class:list={['grid content-between gap-8 bg-night p-10 text-night-fg lg:border-l', rule]}>
+    <div>
+      <dt class="eyebrow text-night-fg/60">Install</dt>
+      <dd class="mt-2">
+        The <code class="font-mono">kupcad</code> CLI and the desktop app for Linux, macOS and
+        Windows: <Link href={LINKS.releases} class={inline}>the latest release</Link>.
+      </dd>
+    </div>
+    <div>
+      <dt class="eyebrow text-night-fg/60">License</dt>
+      <dd class="mt-2">
+        AGPL-3.0, or commercial. What you export is yours: <Link href={LINKS.license} class={inline}
+          >the license FAQ</Link
+        >.
+      </dd>
+    </div>
+  </dl>
+</footer>

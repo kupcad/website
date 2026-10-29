@@ -1,0 +1,126 @@
+/*
+  The site's look: Tailwind on the KupCAD brand's tokens (--kc-*, from @kupcad/ui, which draws the
+  playground, the desktop app and the docs' colours too). A colour changes there, not here: this
+  file only names the site's surfaces after them. Light or dark as the tokens' colour scheme is:
+  the system's, until ThemeSelect sets the root's data-theme; the site's own colours are
+  light-dark() of the two, as the tokens are.
+*/
+@import 'tailwindcss';
+@import '@kupcad/ui/tokens.css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+/* The site's surfaces: cards on a gainsboro page, framed in brand black; dark, the cards on a page
+   one step deeper, their frames the brand's dividers. The night is the brand pair in either: the
+   footer's.
+   The icon (public/icon.svg) on its own colours light, black on the brand orange dark */
+:root {
+  --site-paper: light-dark(var(--kc-section-bg), #111111);
+  --site-frame: light-dark(var(--kc-fg), var(--kc-border));
+  --site-grid: color-mix(in srgb, var(--kc-fg) 14%, transparent);
+  --site-night: #1a1b1c;
+  --site-night-fg: #e3e7eb;
+  --kc-icon-bg: light-dark(#e0501c, #ff5f14);
+  --kc-icon-fg: light-dark(#f1efe8, #1a1b1c);
+}
+
+@theme inline {
+  --color-paper: var(--site-paper);
+  --color-card: var(--kc-bg);
+  --color-ink: var(--kc-fg);
+  --color-muted: var(--kc-muted);
+  --color-frame: var(--site-frame);
+  --color-grid: var(--site-grid);
+  --color-line: var(--kc-border);
+  --color-accent: var(--kc-accent);
+  --color-accent-fg: var(--kc-accent-fg);
+  --color-accent-hover: var(--kc-accent-hover);
+  --color-accent-text: var(--kc-accent-text);
+  --color-section: var(--kc-section-bg);
+  --color-night: var(--site-night);
+  --color-night-fg: var(--site-night-fg);
+}
+
+@theme {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--site-paper);
+    color: var(--kc-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--kc-accent);
+    color: var(--kc-accent-fg);
+  }
+  :focus-visible {
+    outline: 2px solid var(--kc-focus);
+    outline-offset: 2px;
+  }
+}
+
+/* A small uppercase label: a section's kind, a row of facts */
+@utility eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* The headings set huge, tight and uppercase */
+@utility display {
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+/* Thin vertical rules behind a section, a column apart */
+@utility grid-lines {
+  background-image: linear-gradient(to right, var(--site-grid) 1px, transparent 1px);
+  background-size: calc(100% / 7) 100%;
+}
+
+/* A framed grid: its cells separated by the frame's colour, the gap between them */
+@utility frame {
+  background: var(--site-frame);
+  gap: 4px;
+}
+
+/* The icon's ruler: ticks down the left of an orange bar, a long one each fifth */
+@utility ruler {
+  background:
+    repeating-linear-gradient(to bottom, var(--site-night) 0 3px, transparent 3px 60px) 0 0 / 60%
+      100% no-repeat,
+    repeating-linear-gradient(to bottom, var(--site-night) 0 2px, transparent 2px 12px) 0 0 / 35%
+      100% no-repeat,
+    var(--kc-accent);
+}
+
+/* Fine diagonal hatching, as a drawing's section is */
+@utility hatch {
+  background: repeating-linear-gradient(
+    -60deg,
+    color-mix(in srgb, var(--kc-fg) 45%, transparent) 0 1px,
+    transparent 1px 7px
+  );
+}
+
+/* KupCAD code (Code.astro's css-variables theme) in the brand's colours */
+:root {
+  --astro-code-foreground: var(--kc-fg);
+  --astro-code-background: transparent;
+  --astro-code-token-keyword: var(--kc-accent-text);
+  --astro-code-token-function: var(--kc-fg);
+  --astro-code-token-constant: var(--kc-accent-text);
+  --astro-code-token-string: light-dark(#1f7a3f, #5fd08a);
+  --astro-code-token-string-expression: light-dark(#1f7a3f, #5fd08a);
+  --astro-code-token-comment: var(--kc-muted);
+  --astro-code-token-parameter: var(--kc-fg);
+  --astro-code-token-punctuation: var(--kc-muted);
+  --astro-code-token-link: var(--kc-accent-text);
+}

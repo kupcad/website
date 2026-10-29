@@ -1,0 +1,18 @@
+---
+// A link. One off the site (site.ts's isExternal) opens in a new tab, giving that page no handle
+// on this one and not its address.
+import type { HTMLAttributes } from 'astro/types';
+import { isExternal } from '../site';
+
+type Props = HTMLAttributes<'a'> & { href: string };
+
+const { href, ...attrs } = Astro.props;
+const external = isExternal(href);
+---
+
+<a
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  {...attrs}><slot /></a
+>

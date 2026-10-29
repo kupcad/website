@@ -1,0 +1,17 @@
+---
+// KupCAD code, highlighted by its grammar (src/grammars: a copy of the one the kupcad repository
+// generates, `zig build grammar`) in the brand's colours (global.css's --astro-code-*).
+import { Code as AstroCode } from 'astro:components';
+import grammar from '../grammars/kupcad.tmLanguage.json';
+
+interface Props {
+  code: string;
+}
+
+const { code } = Astro.props;
+const kupcad = { ...grammar, name: 'kupcad' } as Parameters<typeof AstroCode>[0]['lang'];
+---
+
+<div class="overflow-x-auto font-mono text-[12.5px] leading-relaxed">
+  <AstroCode code={code} lang={kupcad} theme="css-variables" />
+</div>

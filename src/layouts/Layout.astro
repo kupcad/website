@@ -1,23 +1,48 @@
+---
+// Every page's document: its head (the title, the description, the icon, what a shared link
+// shows) and the site's styles. `fill` makes the page the window's height, its last child taking
+// what is left (the playground).
+import '../styles/global.css';
+import { SITE, THEME_KEY } from '../site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  fill?: boolean;
+}
+
+const { title, description = SITE.description, fill = false } = Astro.props;
+const fullTitle = title ? `${title} · ${SITE.name}` : SITE.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="generator" content={Astro.generator} />
+    <!-- The theme this browser chose (ThemeSelect), set before the page is drawn -->
+    <script is:inline define:vars={{ key: THEME_KEY }}>
+      try {
+        const theme = localStorage.getItem(key);
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch {
+        // No storage: the system's theme
+      }
+    </script>
+  </head>
+  <body class:list={[fill ? 'flex h-dvh flex-col' : 'min-h-dvh']}>
+    <slot />
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

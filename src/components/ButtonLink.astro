@@ -1,0 +1,30 @@
+---
+// A link set as a button: uppercase, an arrow after it, on the accent, on ink or on a card.
+import Link from './Link.astro';
+
+interface Props {
+  href: string;
+  variant?: keyof typeof VARIANTS;
+  class?: string;
+}
+
+const VARIANTS = {
+  accent: 'bg-accent text-accent-fg hover:bg-accent-hover',
+  ink: 'bg-ink text-card hover:bg-ink/85',
+  card: 'bg-card text-ink hover:bg-section',
+};
+
+const { href, variant = 'accent', class: className } = Astro.props;
+---
+
+<Link
+  href={href}
+  class:list={[
+    'eyebrow inline-flex items-center gap-2 px-6 py-4 font-medium transition-colors',
+    VARIANTS[variant],
+    className,
+  ]}
+>
+  <slot />
+  <span aria-hidden="true">→</span>
+</Link>
