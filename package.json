@@ -16,8 +16,8 @@
     "@astrojs/svelte": "^9.1.2",
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
-    "@kupcad/playground": "^0.1.1",
-    "@kupcad/ui": "^0.1.1",
+    "@kupcad/playground": "^0.1.2",
+    "@kupcad/ui": "^0.1.2",
     "astro": "^7.4.4",
     "svelte": "^5.57.3"
   },
