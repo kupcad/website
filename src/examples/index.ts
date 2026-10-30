@@ -4,6 +4,7 @@
 import cup from './cup.kup?raw';
 import planetaryGearbox from './planetary_gearbox.kup?raw';
 import plate from './plate.kup?raw';
+import screwTopJar from './screw_top_jar.kup?raw';
 import standoff from './standoff.kup?raw';
 import text from './text.kup?raw';
 
@@ -18,6 +19,7 @@ export const EXAMPLES: Example[] = [
   { id: 'plate', title: 'Mounting plate', source: plate },
   { id: 'standoff', title: 'Antenna standoff', source: standoff },
   { id: 'planetary_gearbox', title: 'Planetary gearbox', source: planetaryGearbox },
+  { id: 'screw_top_jar', title: 'Screw-top jar', source: screwTopJar },
   { id: 'cup', title: 'Cup (a drawing)', source: cup },
   { id: 'text', title: 'Text', source: text },
 ];
