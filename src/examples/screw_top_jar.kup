@@ -132,7 +132,7 @@ skirt = neck + 1
 lid_top = 2.5
 ribbed = circle(r: lid_r) + circle(r: 1).translate(lid_r, 0).repeat_polar(ribs)
 lid = ribbed.extrude(skirt + lid_top, twist: 20).translate(z: top - skirt) -
-  cylinder(r: bore, h: skirt + 0.01).translate(z: top - skirt - 0.01)
+  cylinder(r: bore, h: skirt + 1).translate(z: top - skirt - 1)
 lid = lid + thread(bore, thread_from + pitch / 2, false)
 badge = text(label, size: diameter / 7, font: "sans-bold", halign: "center", valign: "center")
 lid = lid + badge.extrude(0.8).translate(z: top + lid_top)

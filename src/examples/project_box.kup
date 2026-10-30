@@ -98,6 +98,8 @@ inner = [length + 2 * gap, width + 2 * gap]
 outer = inner.map { |size| size + 2 * wall }
 height = top_z + headroom + 2
 corner = 4
+# How far the lid's lip reaches down inside the walls
+lip = 3
 
 # A block `size` ([x, y]) across and `h` high, rounded by `r` at its upright edges, its corner
 # at (at, at, z)
@@ -109,8 +111,11 @@ end
 box = block(outer, height, corner, -gap - wall, 0) - block(inner, height, corner - wall, -gap, wall)
 
 # A standoff under each of the board's holes, with a pilot hole for an M2.5 screw
-holes.each do |(x, y)|
-  post = cylinder(d: 5.5, h: standoff + 0.01).translate(x, y, wall - 0.01)
+holes.each_with_index do |(x, y), i|
+  if x < 0 || x > length || y < 0 || y > width
+    warn("hole #{i + 1} at [#{x}, #{y}] is off the #{length} × #{width} mm board")
+  end
+  post = cylinder(d: 5.5, h: wall + standoff).translate(x, y, 0)
   box = box + post - cylinder(d: 2.2, h: standoff).translate(x, y, wall + 1)
 end
 
@@ -151,13 +156,15 @@ ports.each_with_index do |port, i|
   if port[:at] > side_length
     warn("cutout #{i + 1} is past the end of the #{port[:side]} side (#{side_length} mm)")
   end
+  if top_z + port[:z] + opening(port).bbox.y_max > height - lip
+    warn("cutout #{i + 1} reaches up behind the lid's lip: give the parts more height")
+  end
   box = box - cutter(port)
 end
 
 # The lid: a plate on the rim, a lip inside the walls to hold it, slots over the board to let
 # its heat out, and the label pressed into it
 fit = 0.25
-lip = 3
 lip_outside = inner.map { |size| size - 2 * fit }
 lip_inside = lip_outside.map { |size| size - 3 }
 ring = block(lip_outside, lip, corner - wall, -gap + fit, height - lip) -
