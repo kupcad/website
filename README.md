@@ -49,6 +49,9 @@ as soon as they are released (`pnpm-workspace.yaml`).
   (`client:only`), as its core runs in a Web Worker on WebAssembly. Only `/playground/` loads it:
   the home page has no JavaScript but the theme switch. Load gives it an example by its
   `load()`, which needs `@kupcad/playground` 0.1.2 or later.
+- **The IDE** is a site of its own, [kupcad.dev](https://kupcad.dev) (the `dev-pwa` repository):
+  a project of scripts kept in the browser, offline and installable. This site links to it beside
+  the playground: in the header, the Browser card and the footer (`LINKS.ide`).
 - **Shared scripts** travel in the address's fragment: `#code=` and the script's UTF-8 in
   base64url (`src/lib/share.js`). The docs' "Open in playground" links write it, and Share does
   too. The fragment never reaches a server, and the script runs in the worker, with no files

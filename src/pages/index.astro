@@ -35,38 +35,37 @@ const COMMANDS = [
   ['kupcad build plate.kup --split parts/', 'a file per part'],
 ];
 
-/** Where KupCAD runs, a card each. */
+/** Where KupCAD runs, a card each, with where to go from it. */
 const PLACES = [
   {
     kind: 'Browser',
-    title: 'Playground',
-    text: 'The editor, the model and its parameters, run by the core compiled to WebAssembly. Nothing to install; embed it in a page of your own with @kupcad/playground.',
-    href: LINKS.playground,
-    action: 'Open',
+    title: 'Playground and IDE',
+    text: 'The core compiled to WebAssembly, nothing to install. The playground runs a script to try and to share (embed it with @kupcad/playground); the IDE keeps a project of scripts in your browser, offline, and installs as an app.',
+    links: [
+      { action: 'Playground', href: LINKS.playground },
+      { action: 'IDE', href: LINKS.ide },
+    ],
     meta: 'WebAssembly',
   },
   {
     kind: 'Terminal',
     title: 'Command line',
     text: 'kupcad build, check, fmt and watch: parameters from the command line or a JSON file, a parts list, every format, and packages from Git.',
-    href: LINKS.cli,
-    action: 'Reference',
+    links: [{ action: 'Reference', href: LINKS.cli }],
     meta: 'Linux · macOS · Windows',
   },
   {
     kind: 'Editor',
     title: 'VS Code',
     text: 'The language server in your editor: problems as you type, hovers with sizes and volumes, go to definition, and the preview beside the script.',
-    href: LINKS.vscode,
-    action: 'Extension',
+    links: [{ action: 'Extension', href: LINKS.vscode }],
     meta: 'kupcad lsp',
   },
   {
     kind: 'Desktop',
     title: 'Desktop app',
     text: 'A folder of scripts, the editor and the preview in one window, on the kupcad it bundles. It keeps itself up to date.',
-    href: LINKS.desktop,
-    action: 'README',
+    links: [{ action: 'README', href: LINKS.desktop }],
     meta: 'macOS · Linux · Windows',
   },
 ];
@@ -231,7 +230,7 @@ const PLACES = [
     </section>
     <section class="frame grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
       {
-        PLACES.map(({ kind, title, text, href, action, meta }) => (
+        PLACES.map(({ kind, title, text, links, meta }) => (
           <article class="flex flex-col bg-card">
             <div class="flex-1 p-6 md:p-8">
               <p class="eyebrow text-muted">{kind}</p>
@@ -239,12 +238,13 @@ const PLACES = [
               <p class="mt-4 leading-relaxed">{text}</p>
             </div>
             <div class="eyebrow flex items-center justify-between gap-4 border-t border-line px-6 py-5 md:px-8">
-              <Link
-                href={href}
-                class="hover:text-accent-text"
-              >
-                {action} →
-              </Link>
+              <span class="flex flex-wrap gap-x-5 gap-y-1">
+                {links.map(({ action, href }) => (
+                  <Link href={href} class="hover:text-accent-text">
+                    {action} →
+                  </Link>
+                ))}
+              </span>
               <span class="text-muted">{meta}</span>
             </div>
           </article>

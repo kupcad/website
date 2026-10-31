@@ -1,11 +1,15 @@
 ---
-// The site's footer, on the night in either theme: the call to try it, the links (site.ts's NAV
-// and the playground), and where KupCAD comes from and under what license.
+// The site's footer, on the night in either theme: the call to try it, the links (site.ts's NAV,
+// the playground and the IDE), and where KupCAD comes from and under what license.
 import { LINKS, NAV } from '../site';
 import ButtonLink from './ButtonLink.astro';
 import Link from './Link.astro';
 
-const links = [{ label: 'Playground', href: LINKS.playground }, ...NAV];
+const links = [
+  { label: 'Playground', href: LINKS.playground },
+  { label: 'IDE', href: LINKS.ide },
+  ...NAV,
+];
 const inline = 'underline hover:text-accent';
 // Hairlines between the columns and the links, as the frame on the night wouldn't show
 const rule = 'border-night-fg/15';
@@ -16,9 +20,12 @@ const rule = 'border-night-fg/15';
     <h2 class="display text-5xl md:text-6xl">Write your next part as code.</h2>
     <p class="max-w-md text-night-fg/75">
       Open the playground and change the script: the model follows as you type, in your browser,
-      with nothing to install.
+      with nothing to install. A project of scripts lives in the IDE, kept in your browser too.
     </p>
-    <ButtonLink href={LINKS.playground} class="self-start">Open the playground</ButtonLink>
+    <div class="flex flex-wrap gap-1">
+      <ButtonLink href={LINKS.playground}>Open the playground</ButtonLink>
+      <ButtonLink href={LINKS.ide} variant="card">Open the IDE</ButtonLink>
+    </div>
   </div>
   <nav aria-label="Footer" class:list={['grid content-start divide-y bg-night lg:border-l', rule]}>
     {

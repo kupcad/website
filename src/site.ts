@@ -10,6 +10,8 @@ export const SITE = {
 
 export const LINKS = {
   playground: '/playground/',
+  /** The IDE: a project of scripts in the browser, kept there, offline, installable (the dev-pwa repository) */
+  ide: 'https://kupcad.dev/',
   docs: 'https://docs.kupcad.org/',
   reference: 'https://docs.kupcad.org/reference/',
   language: 'https://docs.kupcad.org/reference/language/syntax/',
@@ -25,7 +27,7 @@ export const LINKS = {
   license: 'https://github.com/kupcad/kupcad/blob/main/LICENSE-FAQ.md',
 };
 
-/** The header's and the footer's links, the playground's apart: it is the call to action. */
+/** The header's and the footer's links, the playground's and the IDE's apart: they are the call to action. */
 export const NAV = [
   { label: 'Docs', href: LINKS.docs },
   { label: 'GitHub', href: LINKS.github },
