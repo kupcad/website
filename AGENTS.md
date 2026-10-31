@@ -33,5 +33,5 @@ Consult these guides before working on related tasks:
 - A section's repeated rows or cards are a data array in the page's frontmatter, mapped once.
 - Pages ship no JavaScript but the theme switch; the playground is the one island
   (`client:only="svelte"`).
-- `npm run check` and `npm run build` pass before a change is done; look at the pages in a
+- `pnpm check` and `pnpm build` pass before a change is done; look at the pages in a
   browser, light and dark, wide and phone-width, with no sideways scrolling.

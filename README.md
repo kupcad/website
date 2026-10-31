@@ -7,15 +7,18 @@ site of its own, [docs.kupcad.org](https://docs.kupcad.org) (the `docs` reposito
 
 ## Running it
 
-Requires the Node version in [`.tool-versions`](.tool-versions) and npm.
+Requires the Node version in [`.tool-versions`](.tool-versions) and pnpm (12 or later).
 
 ```sh
-npm install
-npm run dev         # the site at http://localhost:4321, reloading as files change
-npm run check       # astro check: the types of the pages, components and scripts
-npm run build       # the static site in dist/
-npm run preview     # serves dist/
+pnpm install
+pnpm dev            # the site at http://localhost:4321, reloading as files change
+pnpm check          # astro check: the types of the pages, components and scripts
+pnpm build          # the static site in dist/
+pnpm preview        # serves dist/
 ```
+
+pnpm installs no version published less than a day ago; `@kupcad/*`, KupCAD's own, are taken
+as soon as they are released (`pnpm-workspace.yaml`).
 
 ## What's where
 
@@ -53,7 +56,7 @@ npm run preview     # serves dist/
 
 ## Keeping in step with KupCAD
 
-- **The playground and the tokens:** `npm install @kupcad/playground@latest @kupcad/ui@latest`,
+- **The playground and the tokens:** `pnpm add @kupcad/playground@latest @kupcad/ui@latest`,
   the two at the same version (the playground depends on that `@kupcad/ui`).
 - **The examples** are copies of the kupcad repository's `examples/`; copy one again when it
   changes there (`plate.kup` is this site's own).
