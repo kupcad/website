@@ -3,11 +3,13 @@
 
 import coffeeMug from './coffee_mug.kup?raw';
 import cup from './cup.kup?raw';
+import fanWheel from './fan_wheel.kup?raw';
 import gridOrganizer from './grid_organizer.kup?raw';
 import hexBitHolder from './hex_bit_holder.kup?raw';
 import hinge from './hinge.kup?raw';
 import honeycombWall from './honeycomb_wall.kup?raw';
 import nameTag from './name_tag.kup?raw';
+import parabolicDish from './parabolic_dish.kup?raw';
 import phoneStand from './phone_stand.kup?raw';
 import planetaryGearbox from './planetary_gearbox.kup?raw';
 import plate from './plate.kup?raw';
@@ -38,6 +40,8 @@ export const EXAMPLES: Example[] = [
   { id: 'name_tag', title: 'Name tag', source: nameTag },
   { id: 'phone_stand', title: 'Phone stand', source: phoneStand },
   { id: 'twisted_vase', title: 'Twisted vase', source: twistedVase },
+  { id: 'fan_wheel', title: 'Fan wheel', source: fanWheel },
+  { id: 'parabolic_dish', title: 'Parabolic dish', source: parabolicDish },
   { id: 'hex_bit_holder', title: 'Hex bit holder', source: hexBitHolder },
   { id: 'honeycomb_wall', title: 'Honeycomb wall', source: honeycombWall },
   { id: 'hinge', title: 'Hinge', source: hinge },
