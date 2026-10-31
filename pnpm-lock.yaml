@@ -18,11 +18,11 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       '@kupcad/playground':
-        specifier: ^0.1.4
-        version: 0.1.4(svelte@5.57.3)
+        specifier: ^0.1.5
+        version: 0.1.5(svelte@5.57.3)
       '@kupcad/ui':
-        specifier: ^0.1.4
-        version: 0.1.4(svelte@5.57.3)
+        specifier: ^0.1.5
+        version: 0.1.5(svelte@5.57.3)
       astro:
         specifier: ^7.4.4
         version: 7.4.4(jiti@2.7.0)(yaml@2.9.1)
@@ -494,32 +494,32 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kupcad/editor@0.1.4':
-    resolution: {integrity: sha512-A9Z2PXf13hUeFoo3r8g0wT7GAYHbgdKzPIF/KyVGgIXQDN7GPclTbSIuF8qvCU+X0svGn04hmXSTbbsMLeJkkQ==}
+  '@kupcad/editor@0.1.5':
+    resolution: {integrity: sha512-mmZWDhShCvCMU1zkPiWh+Ko5/vcy25NTSJwuHlkajw9Y1PXLu1yyVFfFPWPmY71JfAfpYHpCaLfpGuM+DVh6ZA==}
     peerDependencies:
       svelte: ^5.57.2
     peerDependenciesMeta:
       svelte:
         optional: true
 
-  '@kupcad/playground@0.1.4':
-    resolution: {integrity: sha512-/ae7xlaakV45eIzkvMVVGl53OtQMpxDQI8H4OQ18HLZ9GFYnM/srnpOBhzwd4HiQL44gxmsmzBIOShgCYxbOzA==}
+  '@kupcad/playground@0.1.5':
+    resolution: {integrity: sha512-kpw8S2qlecHZ8jdUEaJ1thQ7I06r1TIMBNfRyLyuxspYCpNvxULdKRN+S1xj/vwdBbfW0oJ7CLlSzb8O4/wO4Q==}
     peerDependencies:
       svelte: ^5.57.2
 
-  '@kupcad/protocol@0.1.4':
-    resolution: {integrity: sha512-j/eIVx85pmvzS3kgOZbTY6TAA9jmRAzarSkbk2ji/QZMD02NETDnKq+1PFnfaMlJiC8PT/0KfrgGGU29rX4UeQ==}
+  '@kupcad/protocol@0.1.5':
+    resolution: {integrity: sha512-KrtqAQP32CnHxw7aQk7ZhOMVRggV9FKe3uVQjYtcNQaqQerw/URN6PC3w/nWTkOl77DhZvGxNnc7FyoN1gr5Og==}
 
-  '@kupcad/ui@0.1.4':
-    resolution: {integrity: sha512-ZMTm0IPvOnEOmX0gQXb0DeYFoX6RJAPW77OkDQA4OtbebXbt2DV65G59ulxXQO7G7uX9hc+aUkYUHOAolKE0zQ==}
+  '@kupcad/ui@0.1.5':
+    resolution: {integrity: sha512-oqjwV4ndZcvZNwKqUgEfHsqSh7drz+sQOthpT+PNjQx+TOisaxXKo6Zxb60YzPyoDRY5jeA1RV5eNtycvTg01Q==}
     peerDependencies:
       svelte: ^5.57.2
     peerDependenciesMeta:
       svelte:
         optional: true
 
-  '@kupcad/wasm@0.1.4':
-    resolution: {integrity: sha512-26RpsS7LMYf6ONiX5U1gK0ppbkZm61Fier81hspg2m/ICFP5/U7eK/cYYx8zF9LyiazwejmwMUpOJgKTWV3ngw==}
+  '@kupcad/wasm@0.1.5':
+    resolution: {integrity: sha512-zP1LR2E9BDXhhCbwB+ICwe/xjBzDThzoBkg20Hd62Q3TlybewwPr68KM4ekywOZSgCvlKwI5XfFRS5qA5LI//Q==}
 
   '@lezer/common@1.5.4':
     resolution: {integrity: sha512-xt3Q4z64xM+xhg4M7NXqw1N//1O74bUFo5kz6fwMeC4qwxSuRdwkYSmjcqCEEKYkNw5e67f2hcNqBoNERAEU0w==}
@@ -2418,7 +2418,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@kupcad/editor@0.1.4(svelte@5.57.3)':
+  '@kupcad/editor@0.1.5(svelte@5.57.3)':
     dependencies:
       '@codemirror/autocomplete': 6.20.4
       '@codemirror/commands': 6.11.1
@@ -2429,31 +2429,31 @@ snapshots:
       '@codemirror/search': 6.7.2
       '@codemirror/state': 6.7.6
       '@codemirror/view': 6.43.15
-      '@kupcad/protocol': 0.1.4
+      '@kupcad/protocol': 0.1.5
       '@lezer/highlight': 1.2.5
     optionalDependencies:
       svelte: 5.57.3
 
-  '@kupcad/playground@0.1.4(svelte@5.57.3)':
+  '@kupcad/playground@0.1.5(svelte@5.57.3)':
     dependencies:
-      '@kupcad/editor': 0.1.4(svelte@5.57.3)
-      '@kupcad/protocol': 0.1.4
-      '@kupcad/ui': 0.1.4(svelte@5.57.3)
-      '@kupcad/wasm': 0.1.4
+      '@kupcad/editor': 0.1.5(svelte@5.57.3)
+      '@kupcad/protocol': 0.1.5
+      '@kupcad/ui': 0.1.5(svelte@5.57.3)
+      '@kupcad/wasm': 0.1.5
       svelte: 5.57.3
 
-  '@kupcad/protocol@0.1.4': {}
+  '@kupcad/protocol@0.1.5': {}
 
-  '@kupcad/ui@0.1.4(svelte@5.57.3)':
+  '@kupcad/ui@0.1.5(svelte@5.57.3)':
     dependencies:
-      '@kupcad/protocol': 0.1.4
+      '@kupcad/protocol': 0.1.5
       three: 0.186.1
     optionalDependencies:
       svelte: 5.57.3
 
-  '@kupcad/wasm@0.1.4':
+  '@kupcad/wasm@0.1.5':
     dependencies:
-      '@kupcad/protocol': 0.1.4
+      '@kupcad/protocol': 0.1.5
 
   '@lezer/common@1.5.4': {}
 
