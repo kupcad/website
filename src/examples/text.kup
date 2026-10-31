@@ -1,3 +1,6 @@
+# @title Text
+# @description Letters drawn in a built-in font, extruded, on a plate
+
 # 1. Generate the 2D text profile
 my_text = text("Hello KupCAD!")
 

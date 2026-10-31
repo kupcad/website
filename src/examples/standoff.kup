@@ -1,3 +1,6 @@
+# @title Antenna standoff
+# @description A clip for a drone's antenna: sleeves for two frame standoffs, a platform between them
+
 # [Frame Physical Dimensions]
 standoff_dist = param(
   :standoff_dist,
