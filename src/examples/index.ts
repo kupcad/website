@@ -1,6 +1,7 @@
 // The scripts the playground starts on: the first, the one it opens with, is also the home
 // page's; the others are copies of the kupcad repository's examples/.
 
+import cableClip from './cable_clip.kup?raw';
 import coffeeMug from './coffee_mug.kup?raw';
 import cup from './cup.kup?raw';
 import fanWheel from './fan_wheel.kup?raw';
@@ -42,6 +43,7 @@ export const EXAMPLES: Example[] = [
   { id: 'twisted_vase', title: 'Twisted vase', source: twistedVase },
   { id: 'fan_wheel', title: 'Fan wheel', source: fanWheel },
   { id: 'parabolic_dish', title: 'Parabolic dish', source: parabolicDish },
+  { id: 'cable_clip', title: 'Cable clip', source: cableClip },
   { id: 'hex_bit_holder', title: 'Hex bit holder', source: hexBitHolder },
   { id: 'honeycomb_wall', title: 'Honeycomb wall', source: honeycombWall },
   { id: 'hinge', title: 'Hinge', source: hinge },
