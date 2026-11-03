@@ -1,7 +1,7 @@
 <!--
   @component
   The playground page's app: @kupcad/playground on the script the address brings (`#code=`, as a
-  docs example's "Open in playground" writes it), else on the first example. Above it, a bar in
+  docs example's "Open in playground" writes it), else on `start`. Above it, a bar in
   the site's frame: the example to load (Load gives the playground its script, the example's own
   again if it is the one open), and Share, which puts the script in the address and copies it.
   Replacing a script the person changed asks first.
@@ -12,8 +12,8 @@
 
   /** @import { Example } from '../examples' */
 
-  /** @type {{ examples: Example[] }} */
-  let { examples } = $props();
+  /** @type {{ examples: Example[], start: Example }} */
+  let { examples, start } = $props();
 
   /** How long Share's label says the link was copied, in milliseconds. */
   const SHARED_MS = 2000;
@@ -22,13 +22,13 @@
   const sharedScript = (source) => ({ id: 'shared', title: 'Shared script', source });
 
   /** The script the playground starts with. */
-  const first = sharedOf(location.hash) ?? examples[0];
+  const first = sharedOf(location.hash) ?? start;
   /** What the playground was given last: an example, or a shared script. */
   let given = $state.raw(first);
   /** The script as the playground has it: the one given, as the person edits it. */
   let script = first.source;
   /** The example Load gives. */
-  let chosen = $state(first.id === 'shared' ? examples[0].id : first.id);
+  let chosen = $state(first.id === 'shared' ? start.id : first.id);
   let shareLabel = $state('Share');
   /** @type {ReturnType<typeof Playground>} */
   let playground;

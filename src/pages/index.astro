@@ -8,12 +8,12 @@ import Header from '../components/Header.astro';
 import Icon from '../components/Icon.astro';
 import Link from '../components/Link.astro';
 import Layout from '../layouts/Layout.astro';
-import { EXAMPLES } from '../examples';
+import { HOME_EXAMPLE } from '../examples';
 import { encodeSource } from '../lib/share.js';
 import { LINKS } from '../site';
 
-const plate = EXAMPLES[0];
-const openPlate = `${LINKS.playground}#${encodeSource(plate.source)}`;
+const example = HOME_EXAMPLE;
+const openExample = `${LINKS.playground}#${encodeSource(example.source)}`;
 
 /** What the language covers, a row each, each opening its part of the reference. */
 const CAPABILITIES = [
@@ -29,10 +29,10 @@ const FORMATS = ['STL', '3MF', 'glTF', 'OBJ', 'STEP', 'SVG', 'DXF'];
 /** A part's way from script to file, the CLI commands for each. */
 const STEPS = ['Write', 'Preview', 'Export'];
 const COMMANDS = [
-  ['kupcad check plate.kup', 'lint before it runs'],
-  ['kupcad watch plate.kup -o plate.stl', 'rebuild on each save'],
-  ['kupcad build plate.kup -p width=60 -o plate.3mf', 'a value from outside'],
-  ['kupcad build plate.kup --split parts/', 'a file per part'],
+  ['kupcad check screw_top_jar.kup', 'lint before it runs'],
+  ['kupcad watch screw_top_jar.kup -o jar.stl', 'rebuild on each save'],
+  ['kupcad build screw_top_jar.kup -p diameter=80 -o jar.3mf', 'a value from outside'],
+  ['kupcad build screw_top_jar.kup --split parts/', 'a file per part'],
 ];
 
 /** Where KupCAD runs, a card each, with where to go from it. */
@@ -112,11 +112,11 @@ const PLACES = [
         <div aria-hidden="true" class="ruler hidden lg:block"></div>
         <figure class="self-start border-4 border-frame bg-card">
           <figcaption class="eyebrow flex items-center justify-between gap-4 border-b border-line px-5 py-3">
-            <span>{plate.id}.kup</span>
-            <a href={openPlate} class="text-accent-text hover:underline">Open in playground →</a>
+            <span>{example.id}.kup</span>
+            <a href={openExample} class="text-accent-text hover:underline">Open in playground →</a>
           </figcaption>
           <div class="p-5">
-            <Code code={plate.source} />
+            <Code code={example.source} />
           </div>
         </figure>
         <div class="flex flex-col gap-6">

@@ -1,5 +1,4 @@
-// The scripts the playground starts on: the first, the one it opens with, is also the home
-// page's; the others are copies of the kupcad repository's examples/.
+// The scripts the playground offers: copies of the kupcad repository's examples/, and a plate.
 
 import cableClip from './cable_clip.kup?raw';
 import coffeeMug from './coffee_mug.kup?raw';
@@ -28,14 +27,22 @@ export interface Example {
   source: string;
 }
 
+/** The script the home page shows and the playground opens with */
+export const HOME_EXAMPLE: Example = {
+  id: 'screw_top_jar',
+  title: 'Screw-top jar',
+  source: screwTopJar,
+};
+
+/** Every script, by title */
 export const EXAMPLES: Example[] = [
+  HOME_EXAMPLE,
   { id: 'plate', title: 'Mounting plate', source: plate },
   { id: 'standoff', title: 'Antenna standoff', source: standoff },
   { id: 'project_box', title: 'Project box', source: projectBox },
   { id: 'grid_organizer', title: 'Grid organizer', source: gridOrganizer },
   { id: 'coffee_mug', title: 'Coffee mug', source: coffeeMug },
   { id: 'planetary_gearbox', title: 'Planetary gearbox', source: planetaryGearbox },
-  { id: 'screw_top_jar', title: 'Screw-top jar', source: screwTopJar },
   { id: 'cup', title: 'Cup (a drawing)', source: cup },
   { id: 'text', title: 'Text', source: text },
   { id: 'name_tag', title: 'Name tag', source: nameTag },
@@ -48,4 +55,4 @@ export const EXAMPLES: Example[] = [
   { id: 'honeycomb_wall', title: 'Honeycomb wall', source: honeycombWall },
   { id: 'hinge', title: 'Hinge', source: hinge },
   { id: 'spiral_staircase', title: 'Spiral staircase', source: spiralStaircase },
-];
+].sort((a, b) => a.title.localeCompare(b.title));

@@ -3,7 +3,7 @@
 // (`client:only`), as the core runs in a worker there. The page takes the playground's surface.
 import Header from '../components/Header.astro';
 import PlaygroundApp from '../components/PlaygroundApp.svelte';
-import { EXAMPLES } from '../examples';
+import { EXAMPLES, HOME_EXAMPLE } from '../examples';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
 >
   <Header />
   <main class="min-h-0 flex-1 bg-card">
-    <PlaygroundApp client:only="svelte" examples={EXAMPLES}>
+    <PlaygroundApp client:only="svelte" examples={EXAMPLES} start={HOME_EXAMPLE}>
       <p slot="fallback" class="eyebrow grid h-full place-items-center text-muted">
         Loading the playground…
       </p>
