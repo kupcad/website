@@ -29,10 +29,10 @@ const FORMATS = ['STL', '3MF', 'glTF', 'OBJ', 'STEP', 'SVG', 'DXF'];
 /** A part's way from script to file, the CLI commands for each. */
 const STEPS = ['Write', 'Preview', 'Export'];
 const COMMANDS = [
-  ['kupcad check screw_top_jar.kup', 'lint before it runs'],
-  ['kupcad watch screw_top_jar.kup -o jar.stl', 'rebuild on each save'],
-  ['kupcad build screw_top_jar.kup -p diameter=80 -o jar.3mf', 'a value from outside'],
-  ['kupcad build screw_top_jar.kup --split parts/', 'a file per part'],
+  ['kupcad check plate.kup', 'lint before it runs'],
+  ['kupcad watch plate.kup -o plate.stl', 'rebuild on each save'],
+  ['kupcad build plate.kup -p width=60 -o plate.3mf', 'a value from outside'],
+  ['kupcad build plate.kup --split parts/', 'a file per part'],
 ];
 
 /** Where KupCAD runs, a card each, with where to go from it. */

@@ -27,8 +27,11 @@ export interface Example {
   source: string;
 }
 
-/** The script the home page shows and the playground opens with */
-export const HOME_EXAMPLE: Example = {
+/** The script the home page shows */
+export const HOME_EXAMPLE: Example = { id: 'plate', title: 'Mounting plate', source: plate };
+
+/** The script the playground opens with */
+export const PLAYGROUND_EXAMPLE: Example = {
   id: 'screw_top_jar',
   title: 'Screw-top jar',
   source: screwTopJar,
@@ -37,7 +40,7 @@ export const HOME_EXAMPLE: Example = {
 /** Every script, by title */
 export const EXAMPLES: Example[] = [
   HOME_EXAMPLE,
-  { id: 'plate', title: 'Mounting plate', source: plate },
+  PLAYGROUND_EXAMPLE,
   { id: 'standoff', title: 'Antenna standoff', source: standoff },
   { id: 'project_box', title: 'Project box', source: projectBox },
   { id: 'grid_organizer', title: 'Grid organizer', source: gridOrganizer },
