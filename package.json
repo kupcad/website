@@ -16,15 +16,15 @@
     "@astrojs/svelte": "^9.1.2",
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
-    "@kupcad/playground": "^0.1.8",
-    "@kupcad/ui": "^0.1.8",
-    "astro": "^7.4.4",
+    "@kupcad/playground": "^0.1.10",
+    "@kupcad/ui": "^0.1.10",
+    "astro": "^7.4.5",
     "svelte": "^5.57.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "@tailwindcss/vite": "^4.3.3",
-    "tailwindcss": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.4",
+    "tailwindcss": "^4.3.4",
     "typescript": "^6.0.3"
   }
 }
