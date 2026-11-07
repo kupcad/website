@@ -16,17 +16,17 @@
     "@astrojs/svelte": "^9.1.2",
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
-    "@kupcad/playground": "^0.1.11",
-    "@kupcad/ui": "^0.1.11",
+    "@kupcad/playground": "^0.1.12",
+    "@kupcad/ui": "^0.1.12",
     "astro": "^7.4.7",
     "svelte": "^5.57.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "@tailwindcss/vite": "^4.3.4",
-    "oxfmt": "0.76.0",
-    "oxlint": "1.91.0",
-    "tailwindcss": "^4.3.4",
+    "@tailwindcss/vite": "^4.3.5",
+    "oxfmt": "0.77.0",
+    "oxlint": "1.92.0",
+    "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3"
   },
   "engines": {
