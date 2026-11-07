@@ -58,4 +58,4 @@ export const EXAMPLES: Example[] = [
   { id: 'honeycomb_wall', title: 'Honeycomb wall', source: honeycombWall },
   { id: 'hinge', title: 'Hinge', source: hinge },
   { id: 'spiral_staircase', title: 'Spiral staircase', source: spiralStaircase },
-].sort((a, b) => a.title.localeCompare(b.title));
+].toSorted((a, b) => a.title.localeCompare(b.title));

@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "oxc", "unicorn", "import"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    // A stylesheet is imported for what it does to the page
+    "import/no-unassigned-import": ["error", { "allow": ["**/*.css"] }]
+  },
+  "env": {
+    "es2024": true,
+    "browser": true,
+    "node": true
+  },
+  "ignorePatterns": ["dist/**", ".astro/**"]
+}

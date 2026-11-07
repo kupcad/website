@@ -1,16 +1,16 @@
 {
   "name": "website",
-  "type": "module",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.23.4"
-  },
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "pnpm lint && pnpm fmt:check && astro check",
+    "lint": "oxlint --deny-warnings src astro.config.mjs",
+    "fmt": "oxfmt src astro.config.mjs package.json tsconfig.json",
+    "fmt:check": "oxfmt --check src astro.config.mjs package.json tsconfig.json"
   },
   "dependencies": {
     "@astrojs/svelte": "^9.1.2",
@@ -24,7 +24,12 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
     "@tailwindcss/vite": "^4.3.4",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
     "tailwindcss": "^4.3.4",
     "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22.23.4"
   }
 }
