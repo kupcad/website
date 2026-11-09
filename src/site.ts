@@ -21,8 +21,8 @@ export const LINKS = {
   cli: 'https://docs.kupcad.org/reference/tooling/cli/',
   github: 'https://github.com/kupcad/kupcad',
   releases: 'https://github.com/kupcad/kupcad/releases/latest',
-  vscode: 'https://github.com/kupcad/kupcad/tree/main/packages/kupcad-vscode',
-  desktop: 'https://github.com/kupcad/kupcad/tree/main/packages/kupcad-desktop',
+  vscode: 'https://marketplace.visualstudio.com/items?itemName=kupcad.kupcad-vscode',
+  desktop: 'https://github.com/kupcad/kupcad/releases/latest',
   npm: 'https://www.npmjs.com/package/@kupcad/playground',
   license: 'https://github.com/kupcad/kupcad/blob/main/LICENSE-FAQ.md',
 };
