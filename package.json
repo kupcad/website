@@ -18,7 +18,7 @@
     "@fontsource-variable/geist-mono": "^5.3.0",
     "@kupcad/playground": "^0.1.13",
     "@kupcad/ui": "^0.1.13",
-    "astro": "^7.4.7",
+    "astro": "^7.4.8",
     "svelte": "^5.57.3"
   },
   "devDependencies": {
