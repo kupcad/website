@@ -76,13 +76,11 @@ const PLACES = [
   <main class="frame grid grid-cols-1 px-1">
     <!-- What it is -->
     <section class="grid-lines bg-paper px-6 pt-10 pb-8 md:px-10">
-      <div class="eyebrow flex flex-wrap justify-between gap-x-8 gap-y-2">
-        <span>Parametric CAD language</span>
-        <span>Script → model → part</span>
-        <span>Open source</span>
-      </div>
-      <div class="mt-12 grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_1fr]">
-        <Icon class="size-36 rounded-full md:size-40" />
+      <div class="flex flex-col xl:flex-row items-start gap-10">
+        <h1 class="display mt-16">
+          <span class="block text-[clamp(3.5rem,15vw,14rem)]">KupCAD</span>
+          <span class="block text-[clamp(1.75rem,9.6vw,10rem)] whitespace-nowrap">Parts as code</span>
+        </h1>
         <div class="flex flex-col gap-8">
           <p class="text-lg leading-relaxed md:text-xl">
             KupCAD is a language for parts. You write a script, the shapes and their sizes as code,
@@ -95,10 +93,6 @@ const PLACES = [
           </div>
         </div>
       </div>
-      <h1 class="display mt-16">
-        <span class="block text-[clamp(4.5rem,17vw,16rem)]">KupCAD</span>
-        <span class="block text-[clamp(1.75rem,9.6vw,10rem)] whitespace-nowrap">Parts as code</span>
-      </h1>
     </section>
 
     <!-- A script and what it is -->
