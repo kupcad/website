@@ -31,7 +31,6 @@ export const LINKS = {
 export const NAV = [
   { label: 'Docs', href: LINKS.docs },
   { label: 'GitHub', href: LINKS.github },
-  { label: 'Download', href: LINKS.releases },
 ];
 
 /** Where this browser keeps the theme chosen (ThemeSelect): `light` or `dark`, none for the system's. */
