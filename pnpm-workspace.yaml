@@ -2,3 +2,8 @@
 # age ago, as one not yet looked at; KupCAD's own packages are taken the moment they are released.
 minimumReleaseAgeExclude:
   - '@kupcad/*'
+
+# @astrojs/check resolved a beta of @emnapi/runtime, which crashes `astro check`
+# ("this.bridge.setLastError is not a function"): the stable release everything else uses
+overrides:
+  "@emnapi/runtime": 1.11.3
